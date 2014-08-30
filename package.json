@@ -1,0 +1,28 @@
+{
+  "name": "space-client",
+  "version": "1.0.0",
+  "description": "Top down multiplayer game client",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kennethklee/space-client.git"
+  },
+  "keywords": [
+    "multiplayer",
+    "space",
+    "shooter"
+  ],
+  "author": "Kenneth Lee <kennethkl@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kennethklee/space-client/issues"
+  },
+  "homepage": "https://github.com/kennethklee/space-client",
+  "devDependencies": {
+    "mocha": "^1.21.4"
+  }
+}
