@@ -78,7 +78,24 @@ gulp.task('default', ['clean'], function () {
 });
 
 gulp.task('connect', function () {
-    require('./index');
+    var serveStatic = require('serve-static'),
+        serveIndex = require('serve-index'),
+        port = process.env.PORT || 4000;
+    
+    var app = require('connect')()
+        .use(require('connect-livereload')({port: 35729}))
+        .use(serveStatic('app'))
+        .use(serveStatic('.tmp'))
+        // paths to bower_components should be relative to the current file
+        // e.g. in app/index.html you should use ../bower_components
+        .use('/bower_components', serveStatic('bower_components'))
+        .use(serveIndex('app'));
+
+    require('http').createServer(app)
+        .listen(port)
+        .on('listening', function () {
+            console.log('Started connect web server on http://localhost:%d', port);
+        });
 });
 
 gulp.task('serve', ['connect', 'styles'], function () {
