@@ -5,6 +5,7 @@ var gulp = require('gulp');
 
 // load plugins
 var $ = require('gulp-load-plugins')();
+$.bowerFiles = require('main-bower-files');
 
 gulp.task('styles', function () {
     return gulp.src('app/styles/main.scss')
@@ -54,7 +55,7 @@ gulp.task('images', function () {
 });
 
 gulp.task('fonts', function () {
-    return $.bowerFiles()
+    return gulp.src($.bowerFiles())
         .pipe($.filter('**/*.{eot,svg,ttf,woff}'))
         .pipe($.flatten())
         .pipe(gulp.dest('dist/fonts'))
