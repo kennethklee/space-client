@@ -68,12 +68,16 @@ gulp.task('extras', function () {
 });
 
 gulp.task('clean', function () {
-    return gulp.src(['.tmp', 'dist'], { read: false }).pipe($.clean());
+    return gulp.src(['.tmp', '.sass-cache'], { read: false }).pipe($.clean());
+});
+
+gulp.task('clean-dist', function () {
+    return gulp.src('dist', { read: false }).pipe($.clean());
 });
 
 gulp.task('build', ['html', 'images', 'fonts', 'extras']);
 
-gulp.task('default', ['clean'], function () {
+gulp.task('default', ['clean', 'clean-dist'], function () {
     gulp.start('build');
 });
 
