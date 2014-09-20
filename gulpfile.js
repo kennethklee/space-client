@@ -87,7 +87,8 @@ gulp.task('connect', function () {
         port = process.env.PORT || 4000;
     
     var app = require('connect')()
-        .use(require('connect-livereload')({port: 35729}))
+        //.use(require('connect-livereload')({port: 35729}))
+        .use(require('connect-livereload')({port: 4002}))
         .use(serveStatic('app'))
         .use(serveStatic('.tmp'))
         // paths to bower_components should be relative to the current file
@@ -125,7 +126,7 @@ gulp.task('wiredep', function () {
 });
 
 gulp.task('watch', ['connect', 'serve'], function () {
-    var server = $.livereload();
+    var server = $.livereload(4002);
 
     // watch for changes
 
