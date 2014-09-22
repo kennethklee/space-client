@@ -6,7 +6,8 @@
     "modernizr": "~2.6.2",
     "jquery": "~1.11.0",
     "socket.io-client": "~1.1.0",
-    "requestAnimationFrame": "~0.0.22"
+    "requestAnimationFrame": "~0.0.22",
+    "lodash": "~2.4.1"
   },
   "devDependencies": {}
 }
