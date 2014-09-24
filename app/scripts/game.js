@@ -9,30 +9,45 @@
     var bufferCtx = bufferCanvas.getContext('2d');
     
     // Initialize Game Screen
-    var currentScreen = new Screens.DebugScreen();
+    var updatedAt = new Date().getTime();
+    //var currentScreen = new namespace.Screens.DebugScreen(bufferCanvas, bufferCtx);
+    var currentScreen = new namespace.Screens.MenuScreen(bufferCanvas, bufferCtx);
     
     // Game loop
     var update = function() {
-        space.update();
+        var currentTime = new Date().getTime(),
+            delta = currentTime - updatedAt;
 
-        currentScreen.render(bufferCtx, bufferCanvas.width, bufferCanvas.height);
+        namespace.space.update();
+
+        currentScreen.update(delta);
+        currentScreen.render();
         
         // render screen
         screenCtx.clearRect(0, 0, screenCanvas.width, screenCanvas.height);
         screenCtx.drawImage(bufferCanvas, 0, 0);
+        bufferCtx.clearRect(0, 0, bufferCanvas.width, bufferCanvas.height);
 
+        updatedAt = currentTime;
         requestAnimationFrame(update);
     };
     
     // Handle events
     var onKeyUp = function(event) {
+        //event.preventDefault();
         currentScreen.keyUp(event.keyCode);
     };
     var onKeyDown = function(event) {
+        //event.preventDefault();
         currentScreen.keyDown(event.keyCode);
     };
-    namespace.addEventListener('keyup', onKeyUp);
-    namespace.addEventListener('keydown', onKeyDown);
+    var onKeyPress = function(event) {
+        event.preventDefault();
+        currentScreen.keyPress(event.keyCode);
+    };
+    namespace.addEventListener('keyup', onKeyUp, true);
+    namespace.addEventListener('keydown', onKeyDown, true);
+    namespace.addEventListener('keypress', onKeyPress);
     
     // start!
     update();    

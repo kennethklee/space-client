@@ -1,4 +1,5 @@
-(function() {
+(function(namespace) {
+    /*
     var KEY_UP = 38,
         KEY_DOWN = 40,
         KEY_LEFT = 37,
@@ -7,31 +8,27 @@
         KEY_S = 83,
         KEY_D = 68,
         KEY_W = 87;
-    
-    var DebugScreen = window.Screens.DebugScreen = function() {
-        this.keyState = {};
+    */
+    var DebugScreen = namespace.Screens.DebugScreen = function(canvas, context) {
+        namespace.Screens.BaseScreen.call(this, canvas, context);
     };
-    _.extend(DebugScreen.prototype, Screens.BaseScreen, {
-        render: function(context, width, height) {
-            context.clearRect(0, 0, width, height);
-            context.fillStyle = 'blue';
-            context.fillRect(Math.random() * width, Math.random() * height, 10, 10);
-            context.fillStyle = 'red';
-            context.fillRect(Math.random() * width, Math.random() * height, 10, 10);
-            context.fillStyle = 'green';
-            context.fillRect(Math.random() * width, Math.random() * height, 10, 10);
-
-            renderFps(context);
+    _.extend(DebugScreen.prototype, namespace.Screens.BaseScreen.prototype, {
+        render: function() {
+            var width = this.canvas.width,
+                height = this.canvas.height;
             
-            context.font = '12px Georgia';
-            context.fillText(JSON.stringify(this.keyState), 10, 360);
+            this.context.clearRect(0, 0, width, height);
+            this.context.fillStyle = 'blue';
+            this.context.fillRect(Math.random() * width, Math.random() * height, 10, 10);
+            this.context.fillStyle = 'red';
+            this.context.fillRect(Math.random() * width, Math.random() * height, 10, 10);
+            this.context.fillStyle = 'green';
+            this.context.fillRect(Math.random() * width, Math.random() * height, 10, 10);
 
-        },
-        keyUp: function(keyCode) {
-            this.keyState[keyCode] = false;
-        },
-        keyDown: function(keyCode) {
-            this.keyState[keyCode] = true;
+            renderFps(this.context);
+            
+            this.context.font = '12px Georgia';
+            this.context.fillText(JSON.stringify(this.keyState), 10, 360);
         }
     });
     
@@ -53,4 +50,4 @@
 
         lastUpdated = new Date().getTime();
     };
-})();
+})(this);
