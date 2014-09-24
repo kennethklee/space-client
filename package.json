@@ -1,6 +1,6 @@
 {
   "name": "space-client",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Top down multiplayer space client",
   "main": "index.js",
   "scripts": {
