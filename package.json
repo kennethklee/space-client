@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/kennethklee/space-client",
   "dependencies": {
-    "connect": "^2.14.4"
+    "connect": "^2.14.4",
+    "serve-static": "^1.6.3"
   },
   "devDependencies": {
     "connect-livereload": "^0.4.0",
@@ -41,7 +42,6 @@
     "main-bower-files": "^2.0.0",
     "opn": "^0.1.1",
     "serve-index": "^1.2.0",
-    "serve-static": "^1.5.3",
     "wiredep": "^1.4.3"
   },
   "engines": {
