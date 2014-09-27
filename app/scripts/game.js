@@ -11,7 +11,8 @@
     // Initialize Game Screen
     var updatedAt = new Date().getTime();
     //var currentScreen = new namespace.Screens.DebugScreen(bufferCanvas, bufferCtx);
-    var currentScreen = new namespace.Screens.MenuScreen(bufferCanvas, bufferCtx);
+    //var currentScreen = new namespace.Screens.MenuScreen(bufferCanvas, bufferCtx);
+    var currentScreen = new namespace.Screens.GameScreen(bufferCanvas, bufferCtx, 'anon' + Math.random());
     
     // Game loop
     var update = function() {

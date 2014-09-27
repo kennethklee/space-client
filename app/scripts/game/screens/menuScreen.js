@@ -47,8 +47,6 @@
                 
                 y += item.height;
             }
-            
-
         },
         keyDown: function(code) {
             this.menuIndex += (code === 40) * 1;

@@ -9,6 +9,7 @@
     BaseScreen.prototype.keyUp = function(code) {this.keyState[code] = false;};
     BaseScreen.prototype.keyDown = function(code) {this.keyState[code] = true;};
     BaseScreen.prototype.keyPress = function(/* code */) {};
+    BaseScreen.prototype.dispose = function() {};
     
     namespace.Screens = {
         BaseScreen: BaseScreen
