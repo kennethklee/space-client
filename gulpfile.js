@@ -85,8 +85,8 @@ gulp.task('connect', function () {
     var serveStatic = require('serve-static'),
         serveIndex = require('serve-index'),
         port = process.env.PORT || 4000;
-    
-    var app = require('connect')()
+
+    var app = require('express')()
         //.use(require('connect-livereload')({port: 35729}))
         .use(require('connect-livereload')({port: 4002}))
         .use(serveStatic('app'))

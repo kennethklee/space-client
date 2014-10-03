@@ -3,7 +3,7 @@
  */
 var env = process.env.NODE_ENV || 'development',
     port = process.env.PORT || 4000,
-    app = require('connect')(),
+    app = require('express')(),
     serveStatic = require('serve-static'),
     compress = require('compression');
 
