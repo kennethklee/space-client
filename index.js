@@ -4,8 +4,10 @@
 var env = process.env.NODE_ENV || 'development',
     port = process.env.PORT || 4000,
     app = require('connect')(),
-    serveStatic = require('serve-static');
-   
+    serveStatic = require('serve-static'),
+    compress = require('compression');
+
+app.use(compress());
 app.use(serveStatic('dist'));
 
 app.listen(port, function() {
